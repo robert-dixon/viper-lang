@@ -1,0 +1,10 @@
+global newObj a b =
+	obj = new
+	obj.a = a
+	obj.b = b
+	obj.display = 
+		return this.a + this.b
+	return obj
+
+inst = newObj! 3 5
+inst.display!

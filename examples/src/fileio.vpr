@@ -1,0 +1,23 @@
+amend fname =
+	src = load! fname
+	if not src
+		global error = "There was an error opening the file"
+		return false
+
+	src =  "new " + src
+
+	if save! fname src
+		return true
+	else
+		global error = "There was an error opening the file"
+		return false
+
+while true
+	"Please enter a file name or type \"quit\":"
+	fname = read!
+	if fname is "quit"
+		break
+	if amend! fname
+		"The file was updated!"
+	else
+		global error

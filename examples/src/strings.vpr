@@ -1,0 +1,22 @@
+import string
+
+str = "Hello, my name is Robert"
+"Original:			" + str
+"split:				" + split! str " "
+"toUpper:			" + toUpper! str
+"toLower:			" + toLower! str
+
+"replace:			" + replace! str "my" "his"
+
+"strPos ('my'):			" + strPos! str "my"
+"strPos ('pumpkin'):		" + strPos! str "pumpkin"
+
+"subStr (10, 4):			" + subStr! str 10 4
+"strFrom ('my'):			" + strFrom! str "my"
+"strBetween ('my ', ' is'):	" + strBetween! str "my " " is"
+"strFromPos (18):		" + strFromPos! str 18
+""
+
+list = ["I" "have" "a" "list" "of" "words"]
+"Original:			" + list
+"sandwich:			" + sandwich! list "-"

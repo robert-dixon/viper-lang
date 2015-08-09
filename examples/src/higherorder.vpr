@@ -1,0 +1,70 @@
+octApply fn a b c d e f g h =
+	quadApply fn a b c d =
+		return fn! (fn! a b) (fn! c d)
+	return fn! (quadApply! fn a b c d) (quadApply! fn e f g h)
+
+max a b =
+	if a > b
+		return a
+	else
+		return b
+
+min a b =
+	if a < b
+		return a
+	else
+		return b
+
+mult a b =
+	return a*b
+
+foo a b =
+	return "[" + a + "," + b + "]"
+
+here = 1
+we = 7
+clearly = 8
+have = 3
+a = 4
+lot = 2
+of = 6
+arguments = 5
+
+'Prompt the user to select a function'
+showhelp =
+	"Please enter one of the following options"
+	"	'min'"
+	"	'max'"
+	"	'mult'"
+	"	'foo'"
+	"	'quit'"
+	"	'help'"
+
+=showhelp!
+while true
+	input = read!
+
+
+	if not (input is "max" or input is "min" \
+		or input is "mult" or input is "foo" \
+		or input is "quit" or input is "help")
+		continue
+
+	if input is "help"
+		=showhelp!
+		continue
+	if input is "max"
+		mychoice = max
+	if input is "min"
+		mychoice = min
+	if input is "mult"
+		mychoice = mult
+	if input is "foo"
+		mychoice = foo
+	if input is "quit"
+		break
+
+	'Print the maximum or minimum value'
+	input + "=" + octApply!	mychoice \
+							here we clearly \
+							have a lot of arguments

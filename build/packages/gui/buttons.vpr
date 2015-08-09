@@ -1,0 +1,12 @@
+global makeButton =
+	out = makeControl!
+
+	out.type = "button"
+	out.text = "Button"
+	out.width = 128
+	out.height = 24
+
+	out.press =
+		runBinding! this.bindings "press"
+	
+	return out

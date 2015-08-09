@@ -1,0 +1,13 @@
+ll = [[1 2 3] [2 3 4] [5 7 8] [1 0 1]]
+
+max l =
+	l
+	m = -1
+	for i in l
+		if i > m
+			m = i
+	return m
+
+for i in 0 to (length! ll) - 1
+	ll:i = max! ll:i
+ll

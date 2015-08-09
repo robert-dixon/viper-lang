@@ -1,0 +1,76 @@
+body, html {
+	font-family: 'Raleway', sans-serif;
+	background-color: #282828;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+span.small {
+	font-size: 10px;
+}
+
+div.left {
+	float: left;
+	width: 50%;
+}
+
+div.right {
+	float: right;
+	width: 50%;
+}
+
+div.bannerbox {
+	position: absolute;
+	width: 100%;
+	top:128px;
+	height: 150px;
+	background-color: #333333;
+	text-align: center;
+}
+
+img.logo {
+	position: relative;
+	width: 300px;
+	top: -72px;
+}
+
+.button {
+	cursor: pointer;
+	background-color: #F49D57;
+	color: #282828;
+	-webkit-box-shadow: 4px 4px 0px 0px #282828;
+	-moz-box-shadow: 4px 4px 0px 0px #282828;
+	box-shadow: 4px 4px 0px 0px #282828;
+	margin: 4px;
+}
+
+.options {
+	position: relative;
+	top: -50px;
+}
+
+.options .button {
+	display: inline-block;
+	padding: 16px;
+}
+
+.content {
+	text-align: left;
+	width: 768px;
+	margin: auto;
+	color: #AAAAAA;
+}
+
+h1 {
+	color: #F49D57;
+}
+
+.code {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #ECEC89;
+	background-color: #333333;
+	margin: 4px;
+	padding: 8px;
+}

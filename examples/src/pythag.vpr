@@ -1,0 +1,14 @@
+while not def! n
+	"Please enter an integer:"
+	n = toInt! read!
+	if not def! n
+		"The integer is invalid"
+		
+"The pythagorian triples with a maximum side of " + n + " are:"
+
+'compute the triples'
+for z in 1 to n
+	for y in 1 to n
+		for x in 1 to y
+			if x^2 + y^2 is z^2
+				"(" + x + "," + y + "," + z + ")"

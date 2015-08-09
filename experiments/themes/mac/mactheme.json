@@ -1,0 +1,7 @@
+{
+	"backCol" : [236, 240, 241],
+	"textCol" : [0, 0, 0],
+	"fontPath" : "themes/mac/macfont.ttc",
+	"fontBold" : false,
+	"fontSize" : 14
+}

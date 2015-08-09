@@ -1,0 +1,28 @@
+global gui_windows = []
+
+global makeWindow w h title =
+	out = makeControl!
+	out.type = "window"
+	out.text = title
+	out.width = w
+	out.height = h
+	out.x = 128
+	out.y= 128
+	out.max = false
+	out.visible = false
+	out.children = []
+
+	out.setMaximized newmax =
+		this.max = newmax
+		return "Changed window maximized"
+
+	out.addChild child =
+		this.children = child onto this.children
+		return "Added child to window"
+
+	out.setVisible vis =
+		this.visible = vis
+		return "Changed Window Visibility"
+
+	global gui_windows = out onto gui_windows
+	return out
