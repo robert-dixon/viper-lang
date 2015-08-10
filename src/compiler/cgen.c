@@ -254,7 +254,7 @@ void cGenInstr(BInstr i, char** pos, char* buff)
 			}
 		case BRETURN:
 			{
-				strcpy(*pos,"vprtmpvals[0] = l_pop();\nvprtmpvals[1] = l_pop();\nl_return(l_pop());\nreturn 1;\n");
+				strcpy(*pos,"l_return(l_pop());\nreturn 1;\n");
 				break;
 			}
 		case BCALL:
