@@ -1,0 +1,38 @@
+import windows.vpr
+import buttons.vpr
+
+global makeControl = 
+	out = new
+	out.type = "control"
+	out.width = 0
+	out.height = 0
+	out.bindings = []
+	out.x = 0
+	out.y = 0
+	
+	out.setText newText =
+		this.text = newText
+		return true
+
+	out.addBinding act fn =
+		this.bindings = [act fn] onto this.bindings
+		return true
+
+	out.setSize wid hig =
+		this.width = wid
+		this.height = hig
+		return true
+
+	out.setPosition x y =
+		this.x = x
+		this.y = y
+		return true
+	return out
+
+global runBinding bindings search =
+	for x in bindings
+		if x:0 is search
+			fn = x:1
+			fn!
+			return true
+	return false

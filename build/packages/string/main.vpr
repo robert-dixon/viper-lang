@@ -1,0 +1,53 @@
+'Viper String Library'
+
+'
+Built-In Functions:
+
+	-toLower	str
+		Converts a string to upper case
+	-toUpper	str
+		Converts a string to lower case
+	-split	 	string delimeter
+		Splits a string into a list of strings,
+		separated by the delimeter
+	-sandwich	list delimeter
+		Concatenates a list of strings into one
+		large string, spearated by the delimiter
+	-strPos		search substring
+		Searches through a string for the first
+		index of a substring, and returns the
+		position
+
+	-subStr 	string start length
+		Returns a substring of the string
+		starting at a specified point, and of
+		the specified length.
+'
+
+'Replaces a all occurances of a substring within
+a string'
+global replace string search replace =
+	return sandwich! (split! string search) replace
+
+'Get the remainder of astring from an index
+onward'
+global strFromPos string index =
+	if index is false
+		return false
+	return subStr! string index ((length! string) - index)
+
+'Get the remainder of astring from a substring
+onward'
+global strFrom string search =
+	return strFromPos! string strPos! string search
+
+'Get the string between two keywords'
+global strBetween string start end =
+	s = strFrom! string start
+	if s is false
+		return false
+	s = subStr! s (length! start) ((length! s) - (length! start))
+	n = strPos! s end
+	if n is false
+		return s
+	return subStr! s 0 n

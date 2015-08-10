@@ -1,0 +1,24 @@
+import gui
+
+close =
+	exit!
+
+press =
+	= this.setText! "Pressed"
+
+'My Window'
+win = makeWindow! 400 300 "My Title"
+=win.setMaximized! true
+=win.addBinding! "close" close
+
+'My Button'
+button = makeButton!
+=button.setText! "My Button"
+=button.addBinding! "click" press
+=button.setPosition! 16 16
+
+'Add Children'
+=win.addChild! button
+
+'Show Window'
+=win.setVisible! true

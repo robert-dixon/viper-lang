@@ -1,0 +1,7 @@
+{
+	"backCol" : [40,40,40],
+	"textCol" : [244, 157, 87],
+	"fontPath" : "themes/predawn/menlo.ttf",
+	"fontBold" : false,
+	"fontSize" : 13
+}

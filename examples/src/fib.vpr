@@ -1,0 +1,22 @@
+ifib x =
+	old2 = 1
+	for i in 1 to x
+		temp = old1 + old2
+		old1 = old2
+		old2 = temp
+	return old2
+
+rfib x =
+	if (x is 0) or (x is 1)
+		return 1
+	else
+		return (rfib! x-1) + (rfib! x-2)
+
+while not def! n
+	"Please enter an integer:"
+	n = toInt! read!
+	if not def! n
+		"The integer is invalid"
+
+"The " + n + "th Fibonacci Number is " + ifib! n
+"Implementations match: " + ((ifib! n) is (rfib! n))
