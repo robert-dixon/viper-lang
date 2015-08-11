@@ -53,9 +53,9 @@ if [ -e ./viper-src.zip ]; then
 fi
 
 if hash wget 2>/dev/null; then
-	wget http://fatquack.net/viper-src.zip -O ./viper-src.zip &> /dev/null
+	wget https://github.com/robert-dixon/viper-lang/archive/master.zip -O ./viper-src.zip &> /dev/null
 else
-    curl http://fatquack.net/viper-src.zip -o ./viper-src.zip &> /dev/null
+    curl https://github.com/robert-dixon/viper-lang/archive/master.zip -o ./viper-src.zip &> /dev/null
 fi
 
 if [ ! -e ./viper-src.zip ]; then
