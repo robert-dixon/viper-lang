@@ -469,6 +469,11 @@ AST* loadToAST(FILE* source, char*fname, char* path,
 			}
 		}
 
+		// ignore windows line endings
+		if (chr == '\r' && !insideString) {
+			skipChar = 1;
+		}
+
 		// ignore comments
 		if (chr == '\'' && !insideString) {
 			skipChar = 1;
