@@ -1,76 +1,334 @@
-<!DOCTYPE html>
 <html>
+	<head>
+		<title>Viper</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).scroll(function() {
+				if ($(".whyviper").offset().top - $(document).scrollTop() < $( window ).height()/4)
+				{
+					$("#getln").removeClass('active');
+					$("#learnln").removeClass('active');
+					$("#whyln").addClass('active');
+				} else {
+					if ($(".learnviper").offset().top - $(document).scrollTop() < $( window ).height()/4)
+					{
+						$("#getln").removeClass('active');
+						$("#learnln").addClass('active');
+						$("#whyln").removeClass('active');
+					} else {
+						$("#learnln").removeClass('active');
+						$("#getln").addClass('active');
+						$("#whyln").removeClass('active');
+					}
+				}
+			});
+		</script>
+		<style type='text/css'>
+			body, html {
+				font-family: 'Titillium Web', sans-serif;
+				padding: 0px;
+				margin: 0px;
+				background-color: #2c3e50;
+				color: #16a085;
+			}
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Viper : a clean and simple programming language">
+			.sourcelink {
+				cursor: pointer;
+				position: fixed;
+				background-color: #2c3e50;
+				top: 16px;
+				right: 16px;
+				padding: 16px;
+				border: 2px solid #16a085;
+				-webkit-border-radius: 8px;
+				-moz-border-radius: 8px;
+				border-radius: 8px;
+			}
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+			.sourcelink:hover {
+				background-color: #34495e;
+			}
 
-    <title>Viper</title>
-  </head>
+			.sourcelink .textleft {
+				float: left;
+				font-size: 16px;
+				text-align: right;
+				margin-right: 8px;
+				line-height: 95%;
+				margin-top: 4px;
+			}
 
-  <body>
+			.sourcelink .fa {
+				float: right;
+				font-size: 36px;
+			}
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/robert-dixon/viper-lang">View on GitHub</a>
+			.title {
+				font-weight: normal;
+				font-size: 32px;
+				margin-bottom: -9px;
+			}
+			h1 {
+				margin: 0px;
+				margin-top: 32px;
+				text-align: left;
+				font-weight: normal;
+				font-size: 48px;
+			}
+			h2 {
+				margin: 0px;
+				margin-top: -12px;
+				text-align: left;
+				font-weight: normal;
+				font-size: 16px;
+			}
 
-          <h1 id="project_title">Viper</h1>
-          <h2 id="project_tagline">a clean and simple programming language</h2>
+			.content {
+				margin-left: 288px;
+				margin-right: 32px;
+			}
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/robert-dixon/viper-lang/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/robert-dixon/viper-lang/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+			.navigation {
+				position: fixed;
+				left: 0px;
+				top: 0px;
+				bottom: 0px;
+				width: 256px;
+				background-color: #bdc3c7;
+			}
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a id="why-viper" class="anchor" href="#why-viper" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why Viper?</h3>
+			.navigation .prettystrip {
+				height: 100%;
+				width: 8px;
+				position: relative;
+				float: right;
+				background-color: #16a085;
+			}
 
-<p>Viper is just another programming language.  I didn't build it to solve some great unsolved programming problems - I built it because I wanted to build a language and this one is just the way I like it.  Therefore, my personal taste and preference has been one of the main decisions in designing the language, and I like clean simple stuff.  If this language just so happens to be your taste too, well then please join in!</p>
+			.getviper {
+				text-align: center;
+			}
 
-<p>I like being able to knock together proof-of-concept programs quickly and easily, and that's really what viper is designed for - for using at hackathons and the like, not for designing large serious systems. (But maybe one day...)</p>
+			.button {
+				cursor: pointer;
+				background-color: #16a085;
+				color: #2c3e50;
+				display: inline-block;
+				padding: 16px;
+				-webkit-border-radius: 8px;
+				-moz-border-radius: 8px;
+				border-radius: 8px;
+				margin: 8px;
+				font-size: 24px;
+			}
 
-<h3>
-<a id="how-viper" class="anchor" href="#how-viper" aria-hidden="true"><span class="octicon octicon-link"></span></a>How Viper?</h3>
+			.button:hover {
+				background-color: #1abc9c;
+			}
 
-<p>A set of tutorials will be published when I've got a little further with development.  For now, to install on your machine, download</p>
+			.button .subtext {
+				font-size: 16px;
+			}
 
-<p><code>https://raw.githubusercontent.com/robert-dixon/viper-lang/master/site/viper-install.sh</code></p>
+			.info {
+				margin: 16px;
+				padding: 16px;
+				-webkit-border-radius: 8px;
+				-moz-border-radius: 8px;
+				border-radius: 8px;
+				background-color: #bdc3c7;
+				color: #2c3e50;
+				text-align: left;
+			}
 
-<p>and execute the following commands:</p>
+			.code {
+				background-color: #95a5a6;
+				color: #34495e;
+				padding: 8px;
+				-webkit-border-radius: 4px;
+				-moz-border-radius: 4px;
+				border-radius: 4px;
+				font-family: 'Ubuntu Mono';
+			}
 
-<blockquote>
-<p>chmod +x ./viper-install.sh</p>
+			.green {
+				color: #16a085;
+			}
 
-<p>. ./viper-install.sh</p>
-</blockquote>
+			.navlink {
+				padding: 8px;
+				padding-left: 16px;
+				padding-right: 16px;
+				background-color: #bdc3c7;
+				font-weight: bold;
+				font-size: 18px;
+				text-align: right;
+				color: #16a085;
+				cursor: pointer;
+			}
 
-<p>(Watch out - that first . is important, y'know)</p>
+			.navlink.active {
+				padding: 8px;
+				padding-left: 16px;
+				padding-right: 16px;
+				background-color: #ecf0f1;
+				font-weight: bold;
+				font-size: 18px;
+				text-align: right;
+				color: #1abc9c;
+			}
 
-<h3>
-<a id="who-viper" class="anchor" href="#who-viper" aria-hidden="true"><span class="octicon octicon-link"></span></a>Who Viper?</h3>
+			.navlink.first {
+				margin-top: 128px;
+			}
 
-<p>Well, since you ask, I am <a href="https://github.com/robert-dixon" class="user-mention">@robert-dixon</a>, I'm a Computer Science student at the University of St Andrews and I like languages - programming languages and natural languages.</p>
-      </section>
-    </div>
+			.learnviper , .whyviper {
+				text-align: center;
+			}
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Viper maintained by <a href="https://github.com/robert-dixon">robert-dixon</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+			.code-string {
+				color: #f39c12;
+			}
 
-    
+			.code-fn {
+				color: #8e44ad;
+			}
 
-  </body>
+			.code-key {
+				color: #c0392b;
+			}
+
+			.code-const, .code-assign {
+				color: #16a085;
+			}
+
+			.code-op {
+				color: #2980b9;
+			}
+
+			.code-list {
+				color: #d35400;
+			}
+
+			.code-comment {
+				color: #7f8c8d;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="sourcelink" onclick="window.location='http://github.com/robert-dixon/viper-lang';">
+			<span class="textleft">View Source<br/>on GitHub</span>
+			<i class="fa fa-github"></i>
+		</div>
+		<div class="content">
+			<h1>Viper</h1>
+			<h2>A clean, simple programming language</h2>
+			<div class="getviper">
+				<div class="button" onclick="window.location='dl.php?f=viper-install.sh';">
+					<i class="fa fa-download"></i>
+					Install Script
+					<div class="subtext"><i class="fa fa-apple"></i> / <i class="fa fa-linux"></i></div>
+				</div>
+
+				<div class="button" onclick="window.location='dl.php?f=viper.tmLanguage';">
+					<i class="fa fa-font"></i>
+					Syntax Definition
+					<div class="subtext">Sublime Text</div>
+				</div>
+
+				<div class="info">
+					Run the install script with:
+					<div class="code">
+						chmod +x ./viper-install.sh<br/>
+						. ./viper-install.sh
+					</div>
+					<i>that first <b>.</b> is important!</i>
+					<br/>
+					<span class="green">[Optional]</span> Put the syntax definition in your Sublime Text 'packages' folder.<br/>
+					<br/>
+					That's it!  You're done!<br/>
+					Start using viper as follows:
+					<div class="code">
+						viper /path/to/source_code.vpr -o /path/to/output_executable
+					</div>
+				</div>
+			</div>
+
+			<div class="learnviper">
+				<div class="title">Learn Viper</div>
+				Tutorials coming soon, but for now, check out these code samples...
+
+				<div class="info">
+					<div class="code">
+						<span class="code-string">&quot;Hello World&quot;</span>
+					</div>
+					<br/>
+					<div class="code">
+						<span class="comment">'Generates pythagorean triplets up to given side length'</span><br/>
+						<span class="code-fn">pythag</span> n <span class="code-assign">=</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">for</span> z <span class="code-key">in</span> <span class="code-const">1</span> <span class="code-key">to</span> n<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">for</span> y <span class="code-key">in</span> <span class="code-const">1</span> <span class="code-key">to</span> n<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">for</span> x <span class="code-key">in</span> <span class="code-const">1</span> <span class="code-key">to</span> y<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">if</span> x<span class="code-op">^</span><span class="code-const">2</span> <span class="code-op">+</span> y<span class="code-op">^</span><span class="code-const">2</span> <span class="code-op">is</span> z<span class="code-op">^</span><span class="code-const">2</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-list">[</span> x y z <span class="code-list">]</span><br/><br/>
+						<span class="code-string">&quot;Please enter a maximum side length:&quot;</span><br/>
+						<span class="code-fn">pythag!</span> <span class="code-fn">toInt!</span> <span class="code-fn">read!</span>
+					</div>
+					<br/>
+					<div class="code">
+						<span class="code-fn">operate</span> fn x y <span class="code-assign">=</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-fn">fn!</span> x y<br/><br/>
+
+						<span class="code-fn">add</span> x y <span class="code-assign">=</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">return</span> x <span class="code-op">+</span> y<br/><br/>
+
+						<span class="code-fn">mult</span> x y <span class="code-assign">=</span><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">return</span> x <span class="code-op">*</span> y<br/><br/>
+
+						<span class="code-fn">operate!</span> add <span class="code-const">3</span> <span class="code-const">2</span><br/>
+						<span class="code-fn">operate!</span> mult <span class="code-const">3</span> <span class="code-const">2</span>
+					</div>
+					<br/>
+					<div class="code">
+
+					<span class="code-fn">newObj</span> a b <span class="code-assign">=</span><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;obj <span class="code-assign">=</span> <span class="code-const">new</span><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;obj<span class="code-op">.</span>a <span class="code-assign">=</span> a<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;obj<span class="code-op">.</span>b <span class="code-assign">=</span> b<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;obj<span class="code-op">.</span><span class="code-fn">display</span> <span class="code-assign">=</span><br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">return</span> <span class="code-key">this</span><span class="code-op">.</span>a <span class="code-op">+</span> <span class="code-key">this</span><span class="code-op">.</span>b<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">return</span> obj<br/><br/>
+
+					inst <span class="code-assign">=</span> <span class="code-fn">newObj!</span> <span class="code-const">3</span> <span class="code-const">5</span><br/>
+					inst<span class="code-op">.</span><span class="code-fn">display!</span><br/><br/>
+
+					inst
+					</div>
+				</div>
+			</div>
+			<div class="whyviper">
+				<div class="title">Why Viper?</div>
+				<div class="info">
+					<p>Viper is yet another programming language.  I didn't build it to solve any great unsolved programming challenges or facilitate the easy implementation of a niche design pattern.  I built it because I was interested in programming language design, and now I've designed one - and it's just the way I like it.  If you happen to like it too, the please do join in!  It's there to be enjoyed.</p>
+
+					<p>Let me explain what it's for.  I designed this language with hackathons in mind.  It's a language for quickly throwing together little programs that behave nicely, not for constructing large architecturally complex or high-performant systems.  And coding in it should be simple.  You're brain shouldn't be hurting after a 14-hour stretch.</p>
+
+					<p>So, sure, it's not a ground-breaking earth-shattering development in programming language design, but it still does some things quite well.  Working with higher-order functions is as nice in Viper as is possible for a procedural language - you can just throw them around like variables.  Also it has a number of language features that are well-suited to its intended purpose: list structures that can contain multiple data types can be used as generic data objects and are very versitile and quick to use, dynamic object schemas means you don't have to spend ages designing your classes and inheritence structures when you're coding in a hurry, and so on.</p>
+
+					<p>There are a number of controvertial design decisions - I'd have it no other way.  For example, you might question why I have strayed from convention in abandoning parantheses around function arguments.  Truthfully, the answer is I like the look of this better: I feel that if you're tired or have been working for hours, looking at a page full of punctuation makes you less able to concentrate on the logic of your code - so let's eliminate as much of it as possible and set out the logic as visibly as possible in words and spacing.  Maybe many moons ago, people needed the brackets to clearly distingish their arguments from their function names but as far as I'm concerned, syntax highlighting has solved that problem. It's not for everyone, but I guess that is one the perks of writing your own language: you can have it your way.</p>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="navigation">
+			<div class="prettystrip"></div>
+			<div id="getln" onclick="$('html, body').animate({scrollTop: 0}, 400);" class="navlink active first">Get Viper</div>
+			<div id="learnln" onclick="$('html, body').animate({scrollTop: $('.learnviper').offset().top}, 400);" class="navlink">Learn Viper</div>
+			<div id="whyln" onclick="$('html, body').animate({scrollTop: $('.whyviper').offset().top}, 400);" class="navlink">Why Viper?</div>
+		</div>
+	</body>
 </html>
