@@ -123,10 +123,15 @@
 				border-radius: 8px;
 				margin: 8px;
 				font-size: 24px;
+				text-decoration: none;
 			}
 
 			.button:hover {
 				background-color: #1abc9c;
+			}
+
+			.button .subtext {
+				font-size: 16px;
 			}
 
 			.info {
@@ -223,17 +228,17 @@
 			<h1>Viper</h1>
 			<h2>A clean, simple programming language</h2>
 			<div class="getviper">
-				<div class="button" onclick="window.location='dl.php?f=viper-install.sh';">
+				<a class="button" href="viper-install.sh" download="viper-install.sh">
 					<i class="fa fa-download"></i>
 					Install Script
 					<div class="subtext"><i class="fa fa-apple"></i> / <i class="fa fa-linux"></i></div>
-				</div>
+				</a>
 
-				<div class="button" onclick="window.location='dl.php?f=viper.tmLanguage';">
+				<a class="button" href="viper.tmLanguage" download="viper.tmLanguage">
 					<i class="fa fa-font"></i>
 					Syntax Definition
 					<div class="subtext">Sublime Text</div>
-				</div>
+				</a>
 
 				<div class="info">
 					Run the install script with:
